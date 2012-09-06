@@ -34,6 +34,13 @@
 #include "stuff/rnd.h"
 #include "stuff/errors.h"
 
+#ifdef __CYGWIN__
+#ifndef O_SYNC		/* allow simultaneous inclusion of <aio.h> */
+#define	O_SYNC		0x0080		/* synch I/O file integrity */
+#endif
+#define	O_FSYNC		O_SYNC
+#endif
+
 static void copy_new_symbol_info(
     char *p,
     uint32_t *size,

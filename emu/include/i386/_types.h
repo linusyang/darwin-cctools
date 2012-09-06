@@ -64,7 +64,11 @@ typedef int			__darwin_ct_rune_t;	/* ct_rune_t */
  */
 #include <wchar.h>
 
+#ifdef __CYGWIN__
+typedef mbstate_t		__darwin_mbstate_t;	/* mbstate_t */
+#else
 typedef __mbstate_t		__darwin_mbstate_t;	/* mbstate_t */
+#endif
 
 #if defined(__GNUC__) && defined(__PTRDIFF_TYPE__)
 typedef __PTRDIFF_TYPE__	__darwin_ptrdiff_t;	/* ptr1 - ptr2 */

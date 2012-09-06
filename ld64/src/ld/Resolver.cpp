@@ -27,7 +27,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#ifndef __CYGWIN__
 #include <sys/sysctl.h>
+#endif
 #include <libc.h>
 #include <fcntl.h>
 #include <errno.h>

@@ -93,6 +93,7 @@
 typedef __darwin_natural_t	natural_t;
 typedef int			integer_t;
 
+#ifndef __CYGWIN__
 /*
  * A vm_offset_t is a type-neutral pointer,
  * e.g. an offset into a virtual memory space.
@@ -113,6 +114,7 @@ typedef uintptr_t		vm_size_t;
 #else	/* __LP64__ */
 typedef	natural_t		vm_size_t;
 #endif	/* __LP64__ */
+#endif  /* __CYGWIN__ */
 
 /*
  * This new type is independent of a particular vm map's

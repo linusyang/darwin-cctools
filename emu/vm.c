@@ -4,6 +4,10 @@
 #include <mach/vm_map.h>
 #include "log.h"
 
+#ifdef __APPLE__
+#define MAP_ANONYMOUS MAP_ANON
+#endif
+
 kern_return_t vm_allocate
 (
 	vm_map_t target_task,

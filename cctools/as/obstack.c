@@ -24,6 +24,10 @@ Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
 #define POINTER char *
 #endif
 
+#ifdef __CYGWIN__
+typedef int int32_t;
+#endif
+
 /* Determine default alignment.  */
 struct fooalign {char x; double d;};
 #define DEFAULT_ALIGNMENT ((char *)&((struct fooalign *) 0)->d - (char *)0)

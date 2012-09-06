@@ -41,6 +41,15 @@
 
 #include "AddressSpace.hpp"
 
+#if defined(__APPLE__) && defined(__arm__) || defined (__linux__)
+#define __PRI_64_LENGTH_MODIFIER__ "ll"
+#define PRId64        __PRI_64_LENGTH_MODIFIER__ "d"
+#define PRIi64        __PRI_64_LENGTH_MODIFIER__ "i"
+#define PRIo64        __PRI_64_LENGTH_MODIFIER__ "o"
+#define PRIu64        __PRI_64_LENGTH_MODIFIER__ "u"
+#define PRIx64        __PRI_64_LENGTH_MODIFIER__ "x"
+#define PRIX64        __PRI_64_LENGTH_MODIFIER__ "X"
+#endif
 
 namespace libunwind {
 

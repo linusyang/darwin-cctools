@@ -1,0 +1,15 @@
+.DS_Store
+*.o
+_install/
+.deps/
+.*.swp
+.dirstamp
+stamp-h1
+libs/
+tools/
+prelib/
+config.h
+config.log
+config.status
+Makefile
+cctools-829-*.tgz

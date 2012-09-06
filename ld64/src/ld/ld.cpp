@@ -33,12 +33,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#ifndef __CYGWIN__
 #include <sys/sysctl.h>
+#endif
 #include <fcntl.h>
 #include <errno.h>
 #include <limits.h>
 #include <unistd.h>
+#ifndef __CYGWIN__
 #include <execinfo.h>
+#endif
 #include <mach/mach_time.h>
 #include <mach/vm_statistics.h>
 #include <mach/mach_init.h>
@@ -730,6 +734,7 @@ void __assert_rtn(const char* func, const char* file, int line, const char* fail
 {
 	fprintf(stderr, "Assertion failed: (%s), function %s, file %s, line %d.\n", failedexpr, func, file, line);
 
+	#ifndef  __CYGWIN__
 	void* callStack[128];
 	int depth = ::backtrace(callStack, 128);
 	char* buffer = (char*)malloc(1024);
@@ -747,6 +752,7 @@ void __assert_rtn(const char* func, const char* file, int line, const char* fail
 		long offset = (uintptr_t)callStack[i] - (uintptr_t)info.dli_saddr;
 		fprintf(stderr, "%d  %p  %s + %ld\n", i, callStack[i], symboName, offset);
 	}
+	#endif
 	exit(1);
 }
 }

@@ -88,6 +88,41 @@ typedef	natural_t	thread_state_data_t[THREAD_STATE_MAX];
 #define	THREAD_STATE_FLAVOR_LIST	0	/* List of valid flavors */
 #define THREAD_STATE_FLAVOR_LIST_NEW	128
 
+#if defined(__APPLE__) && defined(__arm__)
+struct x86_thread_state64 {
+    uint64_t		rax;
+    uint64_t		rbx;
+    uint64_t		rcx;
+    uint64_t		rdx;
+    uint64_t		rdi;
+    uint64_t		rsi;
+    uint64_t		rbp;
+    uint64_t		rsp;
+    uint64_t		r8;
+    uint64_t		r9;
+    uint64_t		r10;
+    uint64_t		r11;
+    uint64_t		r12;
+    uint64_t		r13;
+    uint64_t		r14;
+    uint64_t		r15;
+    uint64_t		rip;
+    uint64_t		rflags;
+    uint64_t		cs;
+    uint64_t		fs;
+    uint64_t		gs;
+} ;
+
+#ifndef x86_THREAD_STATE64
+#define x86_THREAD_STATE64		4
+#endif
+
+#ifndef x86_THREAD_STATE64_COUNT
+#define x86_THREAD_STATE64_COUNT	((mach_msg_type_number_t) \
+    ( sizeof (x86_thread_state64) / sizeof (int) ))
+#endif
+#endif
+
 typedef	int			thread_state_flavor_t;
 typedef thread_state_flavor_t	*thread_state_flavor_array_t;
 

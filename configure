@@ -4958,9 +4958,7 @@ if test "$ac_res" != no; then :
   true
 else
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "clock_gettime not found.
-See \`config.log' for more details" "$LINENO" 5; }
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;} }
 
 fi
 
@@ -5698,8 +5696,7 @@ else
 			if test "$cross_compiling" = yes; then :
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "cannot run test program while cross compiling
-See \`config.log' for more details" "$LINENO" 5; }
+$as_echo "#define QSORT_R_IS_GNU 1" >>confdefs.h; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -5738,8 +5735,7 @@ else
 			if test "$cross_compiling" = yes; then :
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "cannot run test program while cross compiling
-See \`config.log' for more details" "$LINENO" 5; }
+$as_echo "#define QSORT_R_IS_GNU 1" >>confdefs.h; }
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -5779,8 +5775,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 		if test "x$my_cv_func_qsort_r_gnu" = "x$my_cv_func_qsort_r_bsd"; then
 			{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "qsort_r has unknown semantics.
-See \`config.log' for more details" "$LINENO" 5; }
+$as_echo "#define QSORT_R_IS_GNU 1" >>confdefs.h; }
 		fi
 
 		if test "x$my_cv_func_qsort_r_gnu" = "xyes"; then
@@ -5798,8 +5793,7 @@ $as_echo "#define QSORT_R_IS_BSD 1" >>confdefs.h
 else
   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "qsort_r not found.
-See \`config.log' for more details" "$LINENO" 5; }
+$as_echo "#define QSORT_R_IS_GNU 1" >>confdefs.h; }
 
 fi
 

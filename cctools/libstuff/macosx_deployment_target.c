@@ -26,7 +26,12 @@
 #include <string.h>
 #include <mach/mach.h>
 #include <sys/types.h>
+#ifndef __CYGWIN__
 #include <sys/sysctl.h>
+#else
+#define	CTL_KERN	1		/* "high kernel": proc, limits */
+#define	KERN_OSRELEASE	 	 2	/* string: system release */
+#endif
 #include "stuff/errors.h"
 #include "stuff/allocate.h"
 #include "stuff/macosx_deployment_target.h"
@@ -115,8 +120,11 @@ use_default:
 	osversion_name[0] = CTL_KERN;
 	osversion_name[1] = KERN_OSRELEASE;
 	osversion_len = sizeof(osversion) - 1;
+	
+	#ifndef __CYGWIN__
 	if(sysctl(osversion_name, 2, osversion, &osversion_len, NULL, 0) == -1)
 	    system_error("sysctl for kern.osversion failed");
+	#endif
 
 	/*
 	 * Now parse this out.  It is expected to be of the form "x.y.z" where

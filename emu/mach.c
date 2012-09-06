@@ -40,6 +40,7 @@ kern_return_t mach_timebase_info (mach_timebase_info_t info)
 	return KERN_SUCCESS;
 }
 
+#ifndef __APPLE__
 uint64_t mach_absolute_time ()
 {
 	// return nanoseconds
@@ -47,3 +48,4 @@ uint64_t mach_absolute_time ()
 	clock_gettime (CLOCK_MONOTONIC, &ts);
 	return ts.tv_sec * 1000000000ULL + ts.tv_nsec;
 }
+#endif
